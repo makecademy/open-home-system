@@ -1,22 +1,27 @@
 // Parameters
 
 // Main box
-w = 45;
-l = 60;
-h = 20;
+w = 110;
+l = 164;
+h = 30;
 thickness = 2; 
 
 // Holes
-fixation_hole_r = 1.5;
+fixation_hole_r = 2.9;
 cylinder_resolution = 50;
-distance_from_edges = 15;
+distance_from_edges = 20;
 
-// Attach
-attach_l = h/2;
-attach_w = 5;
-attach_h = 1;
-attach_clip_h = 1;
-attach_clip_l = 2;
+// Mounting Raspberry Pi
+mount_h = 10;
+mount_r = 5;
+rpi_from_edges = 25;
+rpi_w = 56;
+rpi_l = 85;
+h_1_w = 12.5;
+h_1_l = 5;
+h_2_w = 18;
+h_2_l = 25.5;
+
 
 // Back box
 difference(){
@@ -30,21 +35,42 @@ difference(){
 
 	translate([0,distance_from_edges+thickness,distance_from_edges+thickness]) {
 		rotate([0,90,0]){
-			cylinder(h = 30, r=fixation_hole_r, $fn=cylinder_resolution);
+			cylinder(h = 40, r=fixation_hole_r, $fn=cylinder_resolution);
 		} 
 	}
 
 	translate([0,w-distance_from_edges-thickness,l-distance_from_edges-thickness]) {
 		rotate([0,90,0]){
-			cylinder(h = 30, r=fixation_hole_r, $fn=cylinder_resolution);
+			cylinder(h = 40, r=fixation_hole_r, $fn=cylinder_resolution);
 		} 
 	}
 
 }
 
-// Attach
-translate([-attach_l/2,-attach_h,l/2]) cube([attach_l,attach_h,attach_w]);
-translate([-attach_l/2,0,l/2]) cube([attach_clip_l,attach_clip_h,attach_w]);
+difference(){
+translate([h-mount_h,h_1_w+rpi_from_edges+thickness,h_1_l+thickness+rpi_from_edges]) {
+		rotate([0,90,0]){
+			cylinder(h = mount_h, r=mount_r, $fn=cylinder_resolution);
+		} 
+	}
 
-translate([-attach_l/2,w,l/2]) cube([attach_l,attach_h,attach_w]);
-translate([-attach_l/2,w-attach_h,l/2]) cube([attach_clip_l,attach_clip_h,attach_w]);
+translate([h-mount_h-2*thickness,h_1_w+rpi_from_edges+thickness,h_1_l+thickness+rpi_from_edges]) {
+		rotate([0,90,0]){
+			cylinder(h = mount_h, r=fixation_hole_r, $fn=cylinder_resolution);
+		} 
+	}
+}
+
+difference(){
+translate([h-mount_h-thickness,rpi_w+rpi_from_edges+thickness-h_2_w,rpi_l+thickness+rpi_from_edges-h_2_l]) {
+		rotate([0,90,0]){
+			cylinder(h = mount_h, r=mount_r, $fn=cylinder_resolution);
+		} 
+	}
+
+translate([h-mount_h-2*thickness,rpi_w+rpi_from_edges+thickness-h_2_w,rpi_l+thickness+rpi_from_edges-h_2_l]) {
+		rotate([0,90,0]){
+			cylinder(h = mount_h, r=fixation_hole_r, $fn=cylinder_resolution);
+		} 
+	}
+}
