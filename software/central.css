@@ -1,0 +1,33 @@
+.on {
+	width: 30px; 
+	height: 30px; 
+	background-color: green;
+	float: right;
+	border: 1px solid black;
+	border-radius: 15px;
+}
+
+.off {
+	width: 30px; 
+	height: 30px; 
+	background-color: red;
+	float: right;
+	border: 1px solid black;
+	border-radius: 15px;
+}
+
+.device {
+	width: 250px;
+	font-size: 24px;
+	margin: 10px;
+}
+
+.device_title {
+	width: 250px;
+	font-size: 30px;
+	margin: 10px;
+}
+
+body {
+	font-family: Helvetica;
+}
