@@ -1,3 +1,6 @@
+// Use common library
+use <../../common/primitives.scad>;
+
 // Parameters
 
 // Main box
@@ -8,7 +11,6 @@ thickness = 2;
 
 // Holes
 fixation_hole_r = 1.5;
-cylinder_resolution = 50;
 distance_from_edges = 15;
 
 // Attach
@@ -21,24 +23,10 @@ attach_clip_l = 2;
 // Back box
 difference(){
 
-	difference(){
-		cube([h,w,l]);
-		translate([-thickness,thickness,thickness]) {
-  			cube([h,w-2*thickness,l-2*thickness]);
-		}
-	}
+	case(h, w, l, thickness);
 
-	translate([0,distance_from_edges+thickness,distance_from_edges+thickness]) {
-		rotate([0,90,0]){
-			cylinder(h = 30, r=fixation_hole_r, $fn=cylinder_resolution);
-		} 
-	}
-
-	translate([0,w-distance_from_edges-thickness,l-distance_from_edges-thickness]) {
-		rotate([0,90,0]){
-			cylinder(h = 30, r=fixation_hole_r, $fn=cylinder_resolution);
-		} 
-	}
+	case_hole(distance_from_edges,distance_from_edges, fixation_hole_r);
+	case_hole(w-distance_from_edges,l-distance_from_edges, fixation_hole_r);
 
 }
 

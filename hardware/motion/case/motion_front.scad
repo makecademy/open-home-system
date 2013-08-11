@@ -1,3 +1,6 @@
+// Use common library
+use <../../common/primitives.scad>;
+
 // Parameters
 
 // Main box
@@ -7,8 +10,8 @@ h = 20;
 thickness = 2; 
 
 // Sensor
-sensor_w = 25.4; 
-sensor_l = 25.4;
+sensor_w = 25.3; 
+sensor_l = 25.3;
 distance_from_top = 10;
 
 // Clips
@@ -19,12 +22,7 @@ distance_from_edge = h/2 - attach_clip_l;
 // Front box
 difference(){
 
-	difference(){
-		cube([h,w,l]);
-		translate([-thickness,thickness,thickness]) {
-  			cube([h,w-2*thickness,l-2*thickness]);
-		}
-	}
+	case(h, w, l, thickness);
 
 	// Sensor hole
 	translate([1,w/2-sensor_w/2,l-thickness-distance_from_top-sensor_l]) {
