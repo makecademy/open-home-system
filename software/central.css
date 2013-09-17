@@ -1,33 +1,56 @@
 .on {
-	width: 30px; 
-	height: 30px; 
-	background-color: green;
+	width: 40px; 
+	height: 40px; 
+	background-color: #FFAE00;
 	float: right;
-	border: 1px solid black;
-	border-radius: 15px;
+	border-radius: 10px;
+}
+
+.temp {
+	float: right;
+}
+
+#central {
+	width: 300px;
+	margin: auto;
 }
 
 .off {
-	width: 30px; 
-	height: 30px; 
-	background-color: red;
+	width: 40px; 
+	height: 40px; 
+	background-color: #EEEEEE;
 	float: right;
-	border: 1px solid black;
-	border-radius: 15px;
+	border-radius: 10px;
 }
 
 .device {
 	width: 250px;
-	font-size: 24px;
-	margin: 10px;
+	font-size: 30px;
+	margin: 20px;
+	margin-left: 20px;
 }
 
 .device_title {
 	width: 250px;
-	font-size: 30px;
+	font-size: 36px;
 	margin: 10px;
 }
 
 body {
 	font-family: Helvetica;
+}
+
+@media screen and (max-width: 768px) {
+	
+	.device {
+		width: 90%;
+	}
+
+	.device_title {
+		width: 95%;
+	}
+
+	#central {
+		width: 95%;
+	}
 }

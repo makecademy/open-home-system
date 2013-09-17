@@ -2,7 +2,7 @@
 	
 	// Load XML file
 	$central = simplexml_load_file('central.xml');
-	echo "<div class='device_title'>Device name</div>";
+	echo "<div class='device_title'>Home</div>";
 	// Echo XML file, parse devices
 	foreach($central->children() as $child) {
 		echo "<div class='device'>";
@@ -14,15 +14,59 @@
   				
   			}
 
+  			if ($subchild->getName() == "Type"){
+  				$type = $subchild;
+  			}
+
   			if ($subchild->getName() == "Value"){
-  				if($subchild == "Off") {
-  					echo "<div class='off'></div>";
+
+          if ($type == "temp"){
+              echo "<div class='temp'>" . $subchild . "°C" . "</div>";
+          }
+
+
+  				if ($type == "motion" || $type == "contact"){
+  					if($subchild == "Off") {
+  						echo "<div class='off'></div>";
+  					}
+
+  					if($subchild == "On") {
+  						echo "<div class='on'></div>";
+  					}
   				}
 
-  				if($subchild == "On") {
-  					echo "<div class='on'></div>";
-  				}
+  				if ($type == "led"){
+  					if($subchild == "Off") {
+  						echo "<div class='onoffswitch'>
+            <input type='checkbox' name='onoffswitch' class='onoffswitch-checkbox' id='myonoffswitch'>
+            <label class='onoffswitch-label' for='myonoffswitch'>
+            <div class='onoffswitch-inner'></div>
+            <div class='onoffswitch-switch'></div>
+            </label>
+            </div>
+						<script type='text/javascript'>
+           				$('#myonoffswitch').click(function(){
+                 			$.get('interface.php',{device:'".$child->getName()."',phase:'switch'});
+            			});
+    					</script>";
+  					}
 
+  					if($subchild == "On") {
+  						echo "<div class='onoffswitch'>
+            <input type='checkbox' name='onoffswitch' class='onoffswitch-checkbox' id='myonoffswitch' checked>
+            <label class='onoffswitch-label' for='myonoffswitch'>
+            <div class='onoffswitch-inner'></div>
+            <div class='onoffswitch-switch'></div>
+            </label>
+            </div>
+						<script type='text/javascript'>
+           				$('#myonoffswitch').click(function(){
+                 			$.get('interface.php',{device:'".$child->getName()."',phase:'switch'});
+            			});
+    					</script>";
+  					}
+  				}
+  				
   			}
 
   			// If a device is not registered, propose to register
@@ -31,71 +75,12 @@
     			<script src='jquery-2.0.3.min.js'></script>
 					<script type='text/javascript'>
            				$('#register').click(function(){
-                 			$.get('central.php',{device:'".$child->getName()."',phase:'operation'});
+                 			$.get('interface.php',{device:'".$child->getName()."',phase:'operation'});
             			});
     				</script>";
     		}
   		}
   		echo "</div>";
-	}
-
-	// Respond to GET requests
-	if ($_GET) {
-
-		// Normal operation
-		if ($_GET["device"] && $_GET["data"]) {
-
-			$central = simplexml_load_file('central.xml');
-    		$central->$_GET["device"]->Value = $_GET["data"];
-    		$central->asXML('central.xml');
-
-		}
-
-		// Initialization phases
-		if ($_GET["device"] && $_GET["phase"]) {
-
-			// Detection phase
-			if ($_GET["phase"] == "detection") {
-
-				$central = simplexml_load_file('central.xml');
-
-				$device = $central->addchild($_GET["device"]);
-				$device->addChild("Registered", "False"); 
-
-				$central->asXML('central.xml');
-
-				echo "Device detected";
-
-			}
-
-			// Registration phase
-			if ($_GET["phase"] == "registration") {
-
-				$central = simplexml_load_file('central.xml');
-
-				if ($central->$_GET["device"]->Registered == "True") {
-					echo "Device registered";
-				}
-				else {
-					echo "Not yet registered";
-				}
-
-			}
-
-			// Normal operation phase
-			if ($_GET["phase"] == "operation") {
-
-				$central = simplexml_load_file('central.xml');
-
-				$central->$_GET["device"]->Registered = "True";
-				$central->$_GET["device"]->addChild("Value", "Off"); 
-
-				$central->asXML('central.xml');
-
-			}
-
-		}
-
 	}
 
 ?>
