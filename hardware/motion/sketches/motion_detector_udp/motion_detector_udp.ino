@@ -1,36 +1,38 @@
 /*************************************************** 
-  This is the sketch to test the relay controller 
-  with the CC3000 WiFi chip
+  This is the sketch to test the wireless motion detector 
+  using the Parallax PIR sensor with the CC3000 WiFi chip
   
   Written by Marco Schwartz for Open Home System.
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-//#include <Adafruit_CC3000.h>
 #include <ccspi.h>
-#include <string.h>
 #include <SPI.h>
+#include <string.h>
 #include "utility/debug.h"
 #include <ohs.h>
 
-// Relay pin
-int relay_pin = 8;
+// Sensor pin
+const int sensor_pin = 6; 
+
+// Sensor readout
+int old_sensor_value;
+int sensor_value;
 
 // Registration
 boolean detected = false;
 boolean registered = false;
-String sensor_id = "led1";
+String sensor_id = "motion1";
 
-// Create CC3000 instances
-Adafruit_CC3000 cc3000 = Adafruit_CC3000(ADAFRUIT_CC3000_CS, ADAFRUIT_CC3000_IRQ, ADAFRUIT_CC3000_VBAT, SPI_CLOCK_DIV2);                                                        
+// Create CC3000 object
+Adafruit_CC3000 cc3000 = Adafruit_CC3000(ADAFRUIT_CC3000_CS, ADAFRUIT_CC3000_IRQ, ADAFRUIT_CC3000_VBAT,
+                                         SPI_CLOCK_DIV2);
 uint32_t ip = cc3000.IP2U32(IP1,IP2,IP3,IP4);
 
 void setup(void)
 {
-
-  pinMode(relay_pin,OUTPUT);
-  
   Serial.begin(115200);
+  //displayFreeRam();
   
   // Initialise the module
   Serial.println(F("\nInitializing..."));
@@ -49,16 +51,14 @@ void setup(void)
   while (!cc3000.checkDHCP())
   {
     delay(100); // ToDo: Insert a DHCP timeout!
-  }
-  
-  cc3000.printIPdotsRev(ip);
+  }  
   
   // Check registration status
   Serial.println("Already registered ?");
-  String request = "device="+ sensor_id +"&phase=registration&end=a"; 
-  
+  String request = "device="+ sensor_id +"&phase=registration&end";
   String result = sendRequest(request, cc3000, ip);
-   if(result.startsWith("Device registered"))
+  
+     if(result.startsWith("Device registered"))
     {
       Serial.println("Device already registered");
       registered = true;
@@ -69,15 +69,19 @@ void setup(void)
   if (detected == false) {
     
     Serial.println("Already detected ?");
-    String request = "device="+ sensor_id +"&phase=detection&end=a";
-    
+    String request = "device="+ sensor_id +"&phase=detection&end";
     String result = sendRequest(request, cc3000, ip);
+    
     if(result.startsWith("Device already detected"))
     {
       Serial.println("Device already detected");
       detected = true;
     }
   }
+  
+  // First readout
+  int sensor_value = digitalRead(sensor_pin);
+  old_sensor_value = sensor_value;
   
   // End of setup
   Serial.println("Detected:");
@@ -92,7 +96,7 @@ void loop(void)
   if (registered == false && detected == false)
   {
     Serial.println("Waiting for detection");
-    String request = "device="+ sensor_id +"&phase=detection&end";    
+    String request = "device="+ sensor_id +"&phase=detection&end";
     String result = sendRequest(request, cc3000, ip);
   
     // Sensor detected ?
@@ -111,7 +115,7 @@ void loop(void)
   if (registered == false && detected == true)
   {
     Serial.println("Waiting for registration");
-    String request = "device="+sensor_id+"&phase=registration&end";    
+    String request = "device="+sensor_id+"&phase=registration";
     String result = sendRequest(request, cc3000, ip);
   
   // Request received ?  
@@ -128,19 +132,28 @@ void loop(void)
   
   // Normal operation
   if (registered == true) {
+ 
+    // Read sensor
+    int sensor_value = digitalRead(sensor_pin);
     
-    String request = "device="+sensor_id+"&phase=command&end";
-    String result = sendRequest(request, cc3000, ip);
-  
-      // Request received ?  
-      if(result.startsWith("Off"))
-      {
-         digitalWrite(relay_pin,LOW);
-      }
-      
-      if(result.startsWith("On"))
-      {
-         digitalWrite(relay_pin,HIGH);
-      }
-     }  
+    // If the value didn't change, transmit nothing
+    if (sensor_value == old_sensor_value) {
+      delay(1000);
+    }
+    
+    // Otherwise, connect to server to transmit data
+    else {
+       if (sensor_value == 1) {
+          String request = "device="+sensor_id+"&data=On&end";
+          String result = sendRequest(request, cc3000, ip);
+       }
+       else {
+          String request = "device="+sensor_id+"&data=Off&end";
+          String result = sendRequest(request, cc3000, ip);
+       }
+    
+    old_sensor_value = sensor_value;
+    
+    }
+  }
 }

@@ -1,9 +1,12 @@
+// Use common library
+use <../../common/primitives.scad>;
+
 // Parameters
 
 // Main box
 w = 50;
-l = 70;
-h = 15;
+l = 60;
+h = 16;
 thickness = 2; 
 
 // Holes
@@ -12,17 +15,23 @@ cylinder_resolution = 50;
 distance_from_edges = 15;
 
 // Openings
-opening_h = 6;
+opening_h = 5;
 opening_w = 10;
-opening_s = 5;
-number_openings = (l-opening_s)/(opening_h+opening_s);
+opening_s = 3;
+number_openings = (l-opening_s)/(opening_h+opening_s) - 1;
 
 // Attach
-attach_l = h/2;
-attach_w = 5;
-attach_h = 1;
 attach_clip_h = 1;
 attach_clip_l = 2;
+attach_l = 2*(5+attach_clip_l);
+attach_w = 5;
+attach_h = 1;
+
+// Batteries
+battery_h = 49;
+battery_r = 7;
+number_batteries = 3;
+draw_batteries = 1;
 
 // Back box
 difference(){
@@ -70,3 +79,8 @@ translate([-attach_l/2,0,l/2]) cube([attach_clip_l,attach_clip_h,attach_w]);
 
 translate([-attach_l/2,w,l/2]) cube([attach_l,attach_h,attach_w]);
 translate([-attach_l/2,w-attach_h,l/2]) cube([attach_clip_l,attach_clip_h,attach_w]);
+
+// Batteries
+if (draw_batteries == 1) {
+	batteries(w,l,6,battery_r, battery_h, number_batteries);
+}

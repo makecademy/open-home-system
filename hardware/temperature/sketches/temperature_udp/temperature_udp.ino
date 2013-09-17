@@ -1,34 +1,39 @@
 /*************************************************** 
-  This is the sketch to test the relay controller 
+  This is the sketch to test the DHT11 temperature & humidity sensor
   with the CC3000 WiFi chip
   
   Written by Marco Schwartz for Open Home System.
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-//#include <Adafruit_CC3000.h>
 #include <ccspi.h>
 #include <string.h>
 #include <SPI.h>
 #include "utility/debug.h"
 #include <ohs.h>
+#include "DHT.h"
 
-// Relay pin
-int relay_pin = 8;
+// DHT11 sensor pins
+#define DHTPIN 7 
+#define DHTTYPE DHT11
 
 // Registration
 boolean detected = false;
 boolean registered = false;
-String sensor_id = "led1";
+String sensor_id = "temp1";
 
 // Create CC3000 instances
 Adafruit_CC3000 cc3000 = Adafruit_CC3000(ADAFRUIT_CC3000_CS, ADAFRUIT_CC3000_IRQ, ADAFRUIT_CC3000_VBAT, SPI_CLOCK_DIV2);                                                        
 uint32_t ip = cc3000.IP2U32(IP1,IP2,IP3,IP4);
 
+// Create DHT11 instance
+DHT dht(DHTPIN, DHTTYPE);
+
 void setup(void)
 {
 
-  pinMode(relay_pin,OUTPUT);
+  // Initialize DHT sensor
+  dht.begin();
   
   Serial.begin(115200);
   
@@ -129,18 +134,17 @@ void loop(void)
   // Normal operation
   if (registered == true) {
     
-    String request = "device="+sensor_id+"&phase=command&end";
+    // Measure the humidity & temperature
+    //float h = dht.readHumidity();
+    float temp = dht.readTemperature();
+    
+    String temperature = String((int) temp);
+
+    String request = "device="+sensor_id+"&data="+ temperature +"&end";
     String result = sendRequest(request, cc3000, ip);
-  
-      // Request received ?  
-      if(result.startsWith("Off"))
-      {
-         digitalWrite(relay_pin,LOW);
-      }
-      
-      if(result.startsWith("On"))
-      {
-         digitalWrite(relay_pin,HIGH);
-      }
-     }  
+    
+    delay(1000);
+    
+  }
+
 }

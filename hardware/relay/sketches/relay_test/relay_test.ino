@@ -9,6 +9,7 @@ const int relay_pin = 8; // Relay pin
 
 void setup() {
   Serial.begin(9600);
+  pinMode(relay_pin,OUTPUT);
 }
 
 void loop() {
