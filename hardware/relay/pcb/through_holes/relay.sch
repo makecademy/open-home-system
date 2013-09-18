@@ -8757,6 +8757,144 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 </deviceset>
 </devicesets>
 </library>
+<library name="adafruit">
+<packages>
+<package name="DCJACK_2MM_PTH">
+<description>DJ Jack 2.0mm PTH Right-Angle</description>
+<wire x1="4.5" y1="14.2" x2="2.4" y2="14.2" width="0.2032" layer="21"/>
+<wire x1="-4.5" y1="3.3" x2="-4.5" y2="0" width="0.2032" layer="51"/>
+<wire x1="4.5" y1="0" x2="4.5" y2="3.3" width="0.2032" layer="51"/>
+<wire x1="4.5" y1="0" x2="-4.5" y2="0" width="0.2032" layer="51"/>
+<wire x1="4.5" y1="3.3" x2="4.5" y2="8.4" width="0.2032" layer="21"/>
+<wire x1="4.5" y1="14.2" x2="4.5" y2="13.1" width="0.2032" layer="21"/>
+<wire x1="-4.5" y1="3.3" x2="-4.5" y2="14.2" width="0.2032" layer="21"/>
+<wire x1="-4.5" y1="14.2" x2="-2.6" y2="14.2" width="0.2032" layer="21"/>
+<wire x1="-4.5" y1="3.3" x2="4.5" y2="3.3" width="0.2032" layer="21"/>
+<wire x1="-4.5" y1="3.3" x2="4.5" y2="3.3" width="0.2032" layer="51"/>
+<wire x1="-4.5" y1="3.3" x2="-4.5" y2="12.45" width="0.2032" layer="51"/>
+<wire x1="-4.5" y1="12.45" x2="-4.5" y2="14.2" width="0.2032" layer="51"/>
+<wire x1="4.5" y1="3.3" x2="4.5" y2="8.35" width="0.2032" layer="51"/>
+<wire x1="4.5" y1="8.35" x2="4.5" y2="8.4" width="0.2032" layer="51"/>
+<wire x1="-4.5" y1="14.2" x2="2.65" y2="14.2" width="0.2032" layer="51"/>
+<wire x1="4.5" y1="14.2" x2="2.65" y2="14.2" width="0.2032" layer="51"/>
+<wire x1="2.65" y1="14.2" x2="2.4" y2="14.2" width="0.2032" layer="51"/>
+<wire x1="4.5" y1="14.2" x2="4.5" y2="8.35" width="0.2032" layer="51"/>
+<wire x1="-4.5" y1="12.45" x2="4.4" y2="12.45" width="0.2032" layer="51"/>
+<pad name="PWR" x="0" y="13.6" drill="3.2"/>
+<pad name="GND" x="0" y="7.35" drill="2.8"/>
+<pad name="GNDBREAK" x="4.8" y="10.75" drill="2.8" rot="R90"/>
+<text x="-5.08" y="0" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="6.35" y="0" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<text x="-3.302" y="1.27" size="0.8128" layer="51">DC 2.0/2.1</text>
+</package>
+<package name="DCJACK_2MM_SMT">
+<description>2.0/2.1mm DC Jack - SMT
+&lt;p&gt;4UConnector: 03267&lt;/p&gt;
+&lt;p&gt;Note: Small tRestrict polygon's were added to the ground pads to improve solderability when this part is used in combination with a ground pour.  By default, Eagle will product four large bridges to the ground pour significantly increasing the heat distribution on the pads and preventing lead-free solder from reflowing in certain situations.  For more details, see: http://www.microbuilder.eu/Blog/09-12-14/Reducing_Thermals_for_Large_Pads_in_Eagle.aspx&lt;/p&gt;</description>
+<wire x1="-4" y1="4.5" x2="-5" y2="3.5" width="0.127" layer="51" curve="90"/>
+<wire x1="-5" y1="3.5" x2="-5" y2="-3.5" width="0.127" layer="51"/>
+<wire x1="-5" y1="-3.5" x2="-4" y2="-4.5" width="0.127" layer="51" curve="90"/>
+<wire x1="-4" y1="-4.5" x2="10.254" y2="-4.5" width="0.127" layer="51"/>
+<wire x1="10.254" y1="-4.5" x2="10.254" y2="-1.492" width="0.127" layer="51"/>
+<wire x1="10.254" y1="-1.492" x2="9" y2="-1.492" width="0.127" layer="51"/>
+<wire x1="9" y1="-1.492" x2="9" y2="4.5" width="0.127" layer="51"/>
+<wire x1="9" y1="4.5" x2="-4" y2="4.5" width="0.127" layer="51"/>
+<wire x1="-4" y1="4.5" x2="-5" y2="3.5" width="0.127" layer="21" curve="90"/>
+<wire x1="-5" y1="3.5" x2="-5" y2="-3.5" width="0.127" layer="21"/>
+<wire x1="-5" y1="-3.5" x2="-4" y2="-4.5" width="0.127" layer="21" curve="90"/>
+<wire x1="10.254" y1="-4.5" x2="10.254" y2="-1.492" width="0.127" layer="21"/>
+<wire x1="10.254" y1="-1.492" x2="9" y2="-1.492" width="0.127" layer="21"/>
+<wire x1="9" y1="-1.492" x2="9" y2="4.5" width="0.127" layer="21"/>
+<wire x1="-1.668" y1="4.5" x2="-4" y2="4.5" width="0.127" layer="21"/>
+<wire x1="4.682" y1="4.5" x2="1.588" y2="4.5" width="0.127" layer="21"/>
+<wire x1="9" y1="4.5" x2="7.938" y2="4.5" width="0.127" layer="21"/>
+<wire x1="-4" y1="-4.5" x2="-1.684" y2="-4.5" width="0.127" layer="21"/>
+<wire x1="1.588" y1="-4.5" x2="4.666" y2="-4.5" width="0.127" layer="21"/>
+<wire x1="7.938" y1="-4.5" x2="10.254" y2="-4.5" width="0.127" layer="21"/>
+<smd name="PWR1" x="0" y="5.5" dx="2.4" dy="2" layer="1"/>
+<smd name="PWR2" x="6.2" y="5.5" dx="2.4" dy="2" layer="1"/>
+<smd name="GNDBREAK" x="6.2" y="-5.5" dx="2.4" dy="2" layer="1"/>
+<smd name="GND" x="0" y="-5.5" dx="2.4" dy="2" layer="1"/>
+<text x="0.762" y="2.794" size="1.4224" layer="21" ratio="12" rot="R90">+</text>
+<text x="-1.016" y="-3.81" size="0.8128" layer="21">GND</text>
+<hole x="0" y="0" drill="1.6"/>
+<hole x="4.5" y="0" drill="1.8"/>
+<polygon width="0.0254" layer="41" spacing="0.254">
+<vertex x="1.27" y="-5.7404"/>
+<vertex x="1.27" y="-5.2578"/>
+<vertex x="1.2954" y="-5.2578"/>
+<vertex x="1.2954" y="-5.7404"/>
+</polygon>
+<polygon width="0.0254" layer="41" spacing="0.254">
+<vertex x="-0.254" y="-4.4196"/>
+<vertex x="0.2286" y="-4.4196"/>
+<vertex x="0.2286" y="-4.445"/>
+<vertex x="-0.254" y="-4.445"/>
+</polygon>
+<polygon width="0.0254" layer="41" spacing="0.254">
+<vertex x="4.9022" y="-5.7404"/>
+<vertex x="4.9022" y="-5.2578"/>
+<vertex x="4.9276" y="-5.2578"/>
+<vertex x="4.9276" y="-5.7404"/>
+</polygon>
+<polygon width="0.0254" layer="41" spacing="0.254">
+<vertex x="6.4262" y="-4.445"/>
+<vertex x="5.9436" y="-4.445"/>
+<vertex x="5.9436" y="-4.4196"/>
+<vertex x="6.4262" y="-4.4196"/>
+</polygon>
+</package>
+</packages>
+<symbols>
+<symbol name="DCBARREL">
+<wire x1="0" y1="0" x2="0" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="0" y1="-2.54" x2="-1.27" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-2.54" x2="-3.81" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="-2.54" x2="-2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-1.27" x2="-1.27" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="3.175" x2="0" y2="1.905" width="0.254" layer="94"/>
+<wire x1="-4.445" y1="3.175" x2="-4.445" y2="1.905" width="0.254" layer="94" curve="180"/>
+<wire x1="0" y1="1.905" x2="-4.445" y2="1.905" width="0.254" layer="94"/>
+<wire x1="0" y1="3.175" x2="-4.445" y2="3.175" width="0.254" layer="94"/>
+<text x="-5.08" y="5.08" size="1.27" layer="95">&gt;NAME</text>
+<text x="-5.08" y="-5.08" size="1.27" layer="96">&gt;VALUE</text>
+<pin name="PWR" x="2.54" y="2.54" visible="pad" length="short" direction="pwr" rot="R180"/>
+<pin name="GNDBREAK" x="2.54" y="0" visible="pad" length="short" direction="pwr" rot="R180"/>
+<pin name="GND" x="2.54" y="-2.54" visible="pad" length="short" direction="pwr" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="DCBARREL" prefix="CN" uservalue="yes">
+<description>&lt;p&gt;&lt;b&gt;2.0mm DC Barrel Jack&lt;/b&gt;&lt;/p&gt;
+&lt;b&gt;DCJACK_2MM_PTH&lt;/b&gt; - Through Hole Jack (4UConnector: 05537)</description>
+<gates>
+<gate name="G$1" symbol="DCBARREL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="PTH" package="DCJACK_2MM_PTH">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="GNDBREAK" pad="GNDBREAK"/>
+<connect gate="G$1" pin="PWR" pad="PWR"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="SMT" package="DCJACK_2MM_SMT">
+<connects>
+<connect gate="G$1" pin="GND" pad="GNDBREAK"/>
+<connect gate="G$1" pin="GNDBREAK" pad="GND"/>
+<connect gate="G$1" pin="PWR" pad="PWR1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -8787,15 +8925,15 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 <part name="Q1" library="crystal" deviceset="CRYSTAL" device="HC49S"/>
 <part name="C1" library="resistor" deviceset="C-EU" device="050-025X075" value="22p"/>
 <part name="C3" library="resistor" deviceset="C-EU" device="050-025X075" value="22p"/>
-<part name="JP2" library="SparkFun-Connectors" deviceset="M02" device="PTH" value="ARDUINO_POWER"/>
 <part name="C2" library="SparkFun-Passives" deviceset="CAP_POL" device="PTH1"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="JP3" library="SparkFun-Connectors" deviceset="M09" device=""/>
 <part name="U$1" library="SparkFun-Electromechanical" deviceset="RELAY" device="PTH"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
-<part name="POWER" library="SparkFun-Connectors" deviceset="M02" device="PTH2"/>
-<part name="DEVICE" library="SparkFun-Connectors" deviceset="M02" device="PTH2"/>
 <part name="D1" library="SparkFun-DiscreteSemi" deviceset="DIODE" device="1N4148"/>
+<part name="CN1" library="adafruit" deviceset="DCBARREL" device="PTH"/>
+<part name="POWER" library="SparkFun-Connectors" deviceset="M02" device="5MM"/>
+<part name="DEVICE" library="SparkFun-Connectors" deviceset="M02" device="5MM"/>
 </parts>
 <sheets>
 <sheet>
@@ -8809,15 +8947,15 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 <instance part="Q1" gate="G$1" x="431.8" y="60.96" rot="R90"/>
 <instance part="C1" gate="G$1" x="421.64" y="50.8"/>
 <instance part="C3" gate="G$1" x="411.48" y="55.88"/>
-<instance part="JP2" gate="G$1" x="515.62" y="106.68" rot="R180"/>
 <instance part="C2" gate="G$1" x="482.6" y="101.6"/>
 <instance part="GND1" gate="1" x="482.6" y="88.9"/>
 <instance part="JP3" gate="G$1" x="452.12" y="-27.94"/>
 <instance part="U$1" gate="G$1" x="426.72" y="91.44" rot="R180"/>
 <instance part="GND4" gate="1" x="441.96" y="81.28"/>
-<instance part="POWER" gate="G$1" x="378.46" y="104.14"/>
-<instance part="DEVICE" gate="G$1" x="378.46" y="78.74"/>
 <instance part="D1" gate="G$1" x="449.58" y="88.9" rot="R90"/>
+<instance part="CN1" gate="G$1" x="515.62" y="114.3"/>
+<instance part="POWER" gate="G$1" x="375.92" y="104.14"/>
+<instance part="DEVICE" gate="G$1" x="373.38" y="78.74"/>
 </instances>
 <busses>
 </busses>
@@ -8856,12 +8994,17 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 <segment>
 <pinref part="C2" gate="G$1" pin="-"/>
 <pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="482.6" y1="96.52" x2="482.6" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="G$1" pin="2"/>
-<wire x1="508" y1="104.14" x2="495.3" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="495.3" y1="104.14" x2="495.3" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="495.3" y1="91.44" x2="482.6" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="482.6" y1="91.44" x2="482.6" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="482.6" y1="91.44" x2="482.6" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="CN1" gate="G$1" pin="GND"/>
+<wire x1="518.16" y1="111.76" x2="523.24" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="523.24" y1="111.76" x2="523.24" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="523.24" y1="104.14" x2="495.3" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="CN1" gate="G$1" pin="GNDBREAK"/>
+<wire x1="518.16" y1="114.3" x2="523.24" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="523.24" y1="114.3" x2="523.24" y2="111.76" width="0.1524" layer="91"/>
+<junction x="523.24" y="111.76"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="COIL1"/>
@@ -8972,13 +9115,15 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 <wire x1="398.78" y1="73.66" x2="398.78" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="C2" gate="G$1" pin="+"/>
 <wire x1="482.6" y1="104.14" x2="482.6" y2="106.68" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="G$1" pin="1"/>
-<wire x1="482.6" y1="106.68" x2="508" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="482.6" y1="106.68" x2="528.32" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="482.6" y1="106.68" x2="419.1" y2="106.68" width="0.1524" layer="91"/>
 <junction x="482.6" y="106.68"/>
 <wire x1="398.78" y1="109.22" x2="419.1" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="419.1" y1="109.22" x2="419.1" y2="106.68" width="0.1524" layer="91"/>
 <label x="431.8" y="106.68" size="1.778" layer="95"/>
+<wire x1="528.32" y1="106.68" x2="528.32" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="CN1" gate="G$1" pin="PWR"/>
+<wire x1="528.32" y1="116.84" x2="518.16" y2="116.84" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="449.58" y1="43.18" x2="436.88" y2="43.18" width="0.1524" layer="91"/>
@@ -9018,11 +9163,11 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 </net>
 <net name="N$7" class="0">
 <segment>
-<pinref part="POWER" gate="G$1" pin="1"/>
-<wire x1="386.08" y1="104.14" x2="411.48" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="383.54" y1="104.14" x2="411.48" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="411.48" y1="104.14" x2="411.48" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="MAIN"/>
 <wire x1="411.48" y1="91.44" x2="419.1" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="POWER" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -9030,17 +9175,17 @@ These are standard reverse protection diodes and small signal diodes. SMA packag
 <pinref part="U$1" gate="G$1" pin="NO"/>
 <wire x1="419.1" y1="96.52" x2="416.56" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="416.56" y1="96.52" x2="416.56" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="416.56" y1="78.74" x2="381" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="DEVICE" gate="G$1" pin="1"/>
-<wire x1="416.56" y1="78.74" x2="386.08" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$9" class="0">
 <segment>
-<pinref part="DEVICE" gate="G$1" pin="2"/>
-<wire x1="386.08" y1="81.28" x2="391.16" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="391.16" y1="81.28" x2="391.16" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="391.16" y1="106.68" x2="383.54" y2="106.68" width="0.1524" layer="91"/>
+<pinref part="DEVICE" gate="G$1" pin="2"/>
+<wire x1="381" y1="81.28" x2="391.16" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="POWER" gate="G$1" pin="2"/>
-<wire x1="391.16" y1="106.68" x2="386.08" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

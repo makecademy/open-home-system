@@ -142,5 +142,7 @@ void loop(void)
       {
          digitalWrite(relay_pin,HIGH);
       }
-     }  
+     }
+   
+   delay(100);  
 }
