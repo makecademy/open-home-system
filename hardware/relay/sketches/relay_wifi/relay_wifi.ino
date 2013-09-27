@@ -32,26 +32,8 @@ void setup(void)
   
   Serial.begin(115200);
   
-  // Initialise the module
-  Serial.println(F("\nInitializing..."));
-  if (!cc3000.begin())
-  {
-    Serial.println(F("Couldn't begin()! Check your wiring?"));
-    while(1);
-  }
-
-  // Connect to  WiFi network
-  cc3000.connectToAP(WLAN_SSID, WLAN_PASS, WLAN_SECURITY);
-  Serial.println(F("Connected!"));
-    
-  // Display connection details
-  Serial.println(F("Request DHCP"));
-  while (!cc3000.checkDHCP())
-  {
-    delay(100); // ToDo: Insert a DHCP timeout!
-  }
-  
-  cc3000.printIPdotsRev(ip);
+  // Initialise the module  
+  cc3000Init(cc3000);
   
   // Check registration status
   Serial.println("Already registered ?");
