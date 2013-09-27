@@ -17,7 +17,7 @@
 #include <ohs.h>
 
 // Software serial
-SoftwareSerial cameraconnection = SoftwareSerial(2, 4);
+SoftwareSerial cameraconnection = SoftwareSerial(A0, A1);
 Adafruit_VC0706 cam = Adafruit_VC0706(&cameraconnection);
 
 // Create CC3000 instances
@@ -87,7 +87,7 @@ void setup() {
   
   Serial.println("Full request:");
    Serial.println(F("POST /ohs/camera.php HTTP/1.1"));
-   Serial.println(F("Host: 169.254.251.235:8887"));
+   Serial.println(F("Host: 192.168.0.1:80"));
    Serial.println(F("Content-Type: multipart/form-data; boundary=AaB03x"));
    Serial.print(F("Content-Length: "));
    Serial.println(len);
@@ -96,12 +96,12 @@ void setup() {
    Serial.print(end_request);
  
   Serial.println("Starting connection to server...");
-  Adafruit_CC3000_Client client = cc3000.connectTCP(ip, 8887);
+  Adafruit_CC3000_Client client = cc3000.connectTCP(ip, 80);
   
   if (client.connected()) {
       Serial.println("Connected !");
-      client.println(F("POST /ohs/camera.php HTTP/1.1"));
-      client.println(F("Host: 169.254.251.235:8887"));
+      client.println(F("POST /open-home-system/software/camera.php HTTP/1.1"));
+      client.println(F("Host: 192.168.0.1:80"));
       client.println(F("Content-Type: multipart/form-data; boundary=AaB03x"));
       client.print(F("Content-Length: "));
       client.println(len);
@@ -122,7 +122,7 @@ void setup() {
           wCount = 0;
         }
         jpglen -= bytesToRead; 
-        delay(10);
+        delay(100);
       }
       
       client.print(end_request);

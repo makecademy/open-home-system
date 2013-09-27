@@ -18,9 +18,9 @@ module case_hole(edge_distance_w ,edge_distance_l, hole_radius) {
 }
 
 // PCB
-module pcb(case_width,case_length,translation,pcb_width,pcb_length,pcb_thickness,pcb_hole_radius,pcb_hole_distance) 
+module pcb(translation_w,translation_l,translation_h,pcb_width,pcb_length,pcb_thickness,pcb_hole_radius,pcb_hole_distance) 
 {		
-	translate([translation,(case_width-pcb_length)/2,(case_length-pcb_width)/2]){
+	translate([translation_h,translation_w,translation_l]){
 		rotate([0,-90,0]){
 	difference(){
 		cube([pcb_width,pcb_length,pcb_thickness]);
@@ -48,6 +48,29 @@ module pcb_attaches(case_w,case_l,case_h,pcb_length,pcb_width,pcb_hole_radius,pc
 		}
 
 		translate([case_l-pcb_hole_distance - (case_w-pcb_length)/2 - pcb_hole_radius,case_w-pcb_hole_distance-(case_l-pcb_width)/2 + pcb_hole_radius,-case_h]) {
+			difference(){
+				cylinder(h = pcb_attach_h, r=2*pcb_hole_radius, $fn=50);
+				translate([0,0,pcb_attach_h/2]){
+					cylinder(h = 10, r=pcb_hole_radius, $fn=50);
+				}
+			}
+		}
+	}
+}
+
+// PCB attach
+module pcb_attach(translation_w,translation_l,case_h,pcb_length,pcb_width,pcb_hole_radius,pcb_hole_distance,pcb_attach_h){
+	rotate([0,-90,0]){
+		translate([translation_w + pcb_hole_radius + pcb_hole_distance, translation_l + pcb_hole_distance - pcb_hole_radius,-case_h]) {
+			difference(){
+				cylinder(h = pcb_attach_h, r=2*pcb_hole_radius, $fn=50);
+				translate([0,0,pcb_attach_h/2]){
+					cylinder(h = 10, r=pcb_hole_radius, $fn=50);
+				}
+			}
+		}
+
+		translate([translation_w + pcb_width - pcb_hole_distance,translation_l + pcb_length - pcb_hole_distance,-case_h]) {
 			difference(){
 				cylinder(h = pcb_attach_h, r=2*pcb_hole_radius, $fn=50);
 				translate([0,0,pcb_attach_h/2]){

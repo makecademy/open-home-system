@@ -4,7 +4,7 @@ use <../../common/primitives.scad>;
 // Parameters
 
 // Main box
-w = 50;
+w = 60;
 l = 60;
 h = 16;
 thickness = 2; 

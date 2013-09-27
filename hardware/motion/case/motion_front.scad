@@ -4,7 +4,7 @@ use <../../common/primitives.scad>;
 // Parameters
 
 // Main box
-w = 50;
+w = 60;
 l = 60;
 h = 22;
 thickness = 2; 
@@ -12,12 +12,12 @@ pcb_attach_h = 12;
 draw_box = 1;
 
 // PCB
-pcb_width = 51;
-pcb_length = 43;
+pcb_width = 50;
+pcb_length = 50;
 pcb_thickness = 10;
 pcb_hole = 1;
 pcb_hole_distance = 3.5;
-draw_pcb = 0;
+draw_pcb = 1;
 
 // Sensor
 sensor_w = 24; 
@@ -49,7 +49,7 @@ if (draw_box == 1){
 
 		// Clips on the sides
 		translate([distance_from_edge,-5,l/2]) {
-			cube([attach_clip_l,60,attach_clip_w]);
+			cube([attach_clip_l,100,attach_clip_w]);
 		} 
 	
 	}
@@ -61,7 +61,7 @@ pcb_attaches(w,l,h,pcb_length,pcb_width,pcb_hole,pcb_hole_distance,pcb_attach_h)
 
 // PCB
 if (draw_pcb == 1){
-	pcb(w,l,10,pcb_width,pcb_length,pcb_thickness,pcb_hole,pcb_hole_distance);
+	pcb(5,5,10,pcb_width,pcb_length,pcb_thickness,pcb_hole,pcb_hole_distance);
 }	
 
 // Sensor attaches
