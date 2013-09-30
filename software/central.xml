@@ -1,4 +1,3 @@
 <?xml version="1.0"?>
 <central>
-	
-<led1><Registered>True</Registered><Type>led</Type><Value>Off</Value></led1></central>
+<contact1><Registered>True</Registered><Type>contact</Type><Value>Off</Value></contact1><led1><Registered>True</Registered><Type>led</Type><Value>Off</Value></led1></central>

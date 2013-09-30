@@ -15,7 +15,7 @@ if(!($sock = socket_create(AF_INET, SOCK_DGRAM, 0)))
 echo "Socket created \n";
  
 // Bind the source address
-if( !socket_bind($sock, "0.0.0.0" , 9999) )
+if( !socket_bind($sock, "192.168.0.1" , 9999) )
 {
     $errorcode = socket_last_error();
     $errormsg = socket_strerror($errorcode);
@@ -40,23 +40,17 @@ while(1)
     parse_str($buf);
 
     // Normal operation
-	if (isset($device) && isset($data)) {
-
-		$central = simplexml_load_file('central.xml');
-    	$central->$device->Value = $data;
-    	$central->asXML('central.xml');
-    	$answer = "Data received";
-	}
-
-	// Initialization phases
 	if (isset($device) && isset($phase)) {
 
+		echo "Device: " . $device . "\n";
+    	echo "Phase: " . $phase . "\n";
+    	
 		// Detection phase
 		if ($phase == "detection") {
 
 			$central = simplexml_load_file('central.xml');
 
-			if ($central->$device->Registered == "False") {
+			if (isset($central->$device->Registered)) {
 				$answer = "Device detected";
 			}
 
@@ -86,15 +80,25 @@ while(1)
 
 		}
 
-			if ($phase == "command") {
+		if ($phase == "command") {
 
 				$central = simplexml_load_file('central.xml');
 				$answer = $central->$device->Value . " ";
-			}	
 
 		}
 
+		if ($phase == "receive") {
+
+				$central = simplexml_load_file('central.xml');
+			    $central->$device->Value = $data;
+			    $central->asXML('central.xml');
+			    $answer = "Data received";
+		}
+
+	}
+
     // Answer
+	echo "Answer: " . $answer . "\n" . "\n";
     socket_sendto($sock, $answer , 512 , 0 , $remote_ip , $remote_port);
 }
  
