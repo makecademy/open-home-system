@@ -129,8 +129,6 @@
 <wire x1="-2.04" y1="58.23" x2="-2.04" y2="37.56" width="0" layer="20"/>
 <hole x="35.95" y="55.93" drill="2"/>
 <hole x="-0.23" y="39.37" drill="2"/>
-<dimension x1="-2.04" y1="37.56" x2="-2.04" y2="58.23" x3="-18.5" y3="47.895" textsize="1.778" layer="16"/>
-<dimension x1="-2.04" y1="37.56" x2="37.5" y2="37.5" x3="17.717096875" y3="29.028503125" textsize="1.778" layer="16"/>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">

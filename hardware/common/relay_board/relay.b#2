@@ -129,8 +129,6 @@
 <wire x1="-2.04" y1="58.23" x2="-2.04" y2="37.56" width="0" layer="20"/>
 <hole x="35.95" y="55.93" drill="2"/>
 <hole x="-0.23" y="39.37" drill="2"/>
-<dimension x1="-2.04" y1="37.56" x2="-2.04" y2="58.23" x3="-18.5" y3="47.895" textsize="1.778" layer="16"/>
-<dimension x1="-2.04" y1="37.56" x2="37.5" y2="37.5" x3="17.717096875" y3="29.028503125" textsize="1.778" layer="16"/>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
@@ -555,14 +553,11 @@ design rules under a new name.</description>
 <contactref element="U$1" pad="5"/>
 <contactref element="D1" pad="A"/>
 <contactref element="JP1" pad="17"/>
+<wire x1="18.69" y1="50" x2="28.16" y2="53.73" width="0" layer="19" extent="1-1"/>
 <wire x1="18.69" y1="50" x2="23" y2="50" width="0.8128" layer="16"/>
 <wire x1="23" y1="50" x2="23" y2="39.5" width="0.8128" layer="16"/>
 <wire x1="23" y1="39.5" x2="26.39" y2="39.5" width="0.8128" layer="16"/>
 <wire x1="26.39" y1="39.5" x2="26.39" y2="39.69" width="0.8128" layer="16"/>
-<wire x1="18.69" y1="50" x2="18.5" y2="50" width="0.8128" layer="16"/>
-<wire x1="18.5" y1="50" x2="18.5" y2="52" width="0.8128" layer="16"/>
-<wire x1="18.5" y1="52" x2="28.16" y2="52" width="0.8128" layer="16"/>
-<wire x1="28.16" y1="52" x2="28.16" y2="53.73" width="0.8128" layer="16"/>
 </signal>
 <signal name="N$9">
 <contactref element="DEVICE" pad="2"/>

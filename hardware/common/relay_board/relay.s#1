@@ -1549,10 +1549,6 @@ With larger annulars</description>
 <wire x1="449.58" y1="96.52" x2="474.98" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="474.98" y1="96.52" x2="474.98" y2="91.44" width="0.1524" layer="91"/>
 <junction x="449.58" y="96.52"/>
-<wire x1="474.98" y1="91.44" x2="480.06" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="480.06" y1="91.44" x2="480.06" y2="96.52" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="A" pin="1"/>
-<wire x1="480.06" y1="96.52" x2="485.14" y2="96.52" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="2">
